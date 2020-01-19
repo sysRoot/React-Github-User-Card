@@ -13,3 +13,9 @@
 .pull-left {
 text-align: start;
 }
+
+.followers-center {
+  display: flexbox;
+  justify-content: space-around;
+  margin: 0 auto !important;
+}

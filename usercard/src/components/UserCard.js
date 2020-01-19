@@ -3,7 +3,6 @@ import Moment from 'react-moment';
 import { Card, Icon, Image, Divider } from 'semantic-ui-react';
 import { UserCardLoader } from './Loaders';
 const UserCard = ({ user }) => {
-    console.log(user);
     return (
         <>
             {/* {user === null ? (
@@ -35,6 +34,9 @@ const UserCard = ({ user }) => {
                                     <a href='https://api.github.com/users/sysRoot/repos'>
                                         {user.public_repos}
                                     </a>
+                                    <br />
+                                    Github:{' '}
+                                    <a href={user.html_url}>{user.html_url}</a>
                                     <br />
                                     Portfolio:{' '}
                                     <a href={user.blog}>{user.blog}</a>

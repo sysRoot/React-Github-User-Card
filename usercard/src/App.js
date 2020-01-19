@@ -16,7 +16,6 @@ class App extends Component {
     componentDidMount() {
         Axios.get('https://api.github.com/users/sysRoot')
             .then(res => {
-              console.log(res.data)
                 this.setState({ user: res.data });
             })
             .catch(err => console.log(err));
@@ -31,7 +30,7 @@ class App extends Component {
         return (
             <div className='App'>
                 <UserCard user={this.state.user} />
-                <FollowerList />
+                <FollowerList followers={this.state.followers} />
             </div>
         );
     }
