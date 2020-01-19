@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.avatar {
+  width: 180px;
+  height: 180px;
+}
+
+.pull-left {
+text-align: start;
+}
+
+.followers-center {
+  display: flexbox;
+  justify-content: space-around;
+  margin: 0 auto !important;
+}
