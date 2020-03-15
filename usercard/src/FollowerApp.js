@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import './App.css';
-import UserCard from './components/UserCard';
-import FollowerList from './components/FollowerList';
-import {Route} from 'react-router-dom'
-import FollowerApp from './FollowerApp';
+import SubUserCard from './components/SubUserCard';
+import SubFollowerList from './components/SubFollowerList';
+import { withRouter } from 'react-router-dom';
 
-class App extends Component {
+class FollowerApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
             user: null,
             followers: null
         };
+        this.id = this.props.match.params.id
     }
 
     componentDidMount() {
-        Axios.get('https://api.github.com/users/sysRoot')
+        console.log('jc: FollowerApp.js: Follower App:', this.props)
+        Axios.get(`https://api.github.com/users/${this.id}`)
             .then(res => {
                 this.setState({ user: res.data });
             })
             .catch(err => console.log(err));
-        Axios.get('https://api.github.com/users/sysRoot/followers')
+        Axios.get(`https://api.github.com/users/${this.id}/followers`)
             .then(res => {
                 this.setState({ followers: res.data });
             })
@@ -31,12 +32,11 @@ class App extends Component {
     render() {
         return (
             <div className='App'>
-                <Route exact path='/' render={() => <UserCard user={this.state.user} /> } />
-                <Route exact path='/' render={() => <FollowerList followers={this.state.followers} /> } />
-                <Route exact path='/follower/:id' component={FollowerApp} />
+                <SubUserCard user={this.state.user} />
+                <SubFollowerList followers={this.state.followers} />
             </div>
         );
     }
 }
 
-export default App;
+export default withRouter(FollowerApp);

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 const Follower = ({ follower }) => {
     return (
@@ -11,7 +12,7 @@ const Follower = ({ follower }) => {
                         size='mini'
                         src={follower.avatar_url}
                     />
-                    <Card.Header>{follower.login}</Card.Header>
+                    <Link to={`/follower/${follower.login}`}><Card.Header>{follower.login}</Card.Header></Link>
                     <Card.Description>
                         <a href={follower.html_url}>{follower.html_url}</a>
                     </Card.Description>
