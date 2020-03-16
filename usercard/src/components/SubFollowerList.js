@@ -12,7 +12,9 @@ const FollowerList = ({ followers }) => {
                         <FollowersLoader />
                     </Card>
                 ) : (
-                    followers.map(follower => <Follower follower={follower} key={follower.node_id}/>)
+                    followers.map(follower => (
+                        <Follower follower={follower} key={follower.node_id} />
+                    ))
                 )}
             </Card.Group>
         </>
